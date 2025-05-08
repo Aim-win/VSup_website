@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vsup</title>
+  <style>
+    /* Body with initial background */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+      background: #ffffff;  /* Start with white */
+      transition: background-color 3s ease;  /* Smooth transition for the background color */
+    }
+
+    /* After the page loads, apply this class */
+    .background-fade {
+      background: #268fe6;  /* Purple gradient */
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <h1>Welcome to the Site!</h1>
+    <p>Content goes here...</p>
+  </div>
+
+  <script>
+    // Adding class after the page loads
+    window.addEventListener('load', function () {
+      document.body.classList.add('background-fade');
+    });
+  </script>
+</body>
+</html>

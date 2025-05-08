@@ -1,0 +1,9 @@
+CREATE DATABASE validation_sup;
+
+CREATE TABLE users (
+  CNE INT PRIMARY KEY,
+  nom VARCHAR(20) NOT NULL,
+  email VARCHAR(100) NOT NULL,
+  mot_de_passe VARCHAR(255) NOT NULL,
+  DN DATE NOT NULL
+);
