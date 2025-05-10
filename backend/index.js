@@ -7,7 +7,11 @@ dotenv.config();
 
 const app = express();
 
-app.use(cors());
+app.use(cors({
+  origin: 'https://loginvs.up.railway.app',
+  credentials: true, // Optional, if you plan to use cookies or headers like Authorization
+}));
+
 app.use(express.json());
 
 app.use('/api/auth', authRoutes);
@@ -18,5 +22,5 @@ app.get('/', (req, res) => {
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
-  console.log(` Serveur backend démarré sur http://localhost:${PORT}`);
+  console.log(` Serveur backend démarré sur https://vsup-backend.up.railway.app:${PORT}`);
 });
