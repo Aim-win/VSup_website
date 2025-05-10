@@ -164,16 +164,9 @@ img, .logo {
 }
 
 /* Media query for very large/high-res screens (e.g. 2560px and up) */
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 2560px) {
   body, html {
     font-size: 1.25rem;
-  }
-
-  .language-toggle {
-    top: 5px;
-    right: 5px;
-    padding: 4px 8px;
-    font-size: 0.8rem;
   }
 
   .form-content {
@@ -192,22 +185,6 @@ img, .logo {
 
   .logo {
     width: 340px;
-  }
-   .app-container {
-    flex-direction: column;
-  }
-
-  .form-section,
-  .image-section {
-    width: 100%;
-  }
-
-  .form-section {
-    order: 1;
-  }
-
-  .image-section {
-    order: 2;
   }
 
 }
