@@ -12,6 +12,7 @@ body, html, #root {
 
 .app-container {
   display: flex;
+  flex-direction: row;
   height: 100vh;
   width: 100vw;
   overflow: hidden;
@@ -163,18 +164,18 @@ img, .logo {
 }
 
 /* Media query for very large/high-res screens (e.g. 2560px and up) */
-@media screen and (min-width: 2560px) {
+@media screen and (min-width: 768px) {
   body, html {
     font-size: 1.25rem;
   }
 
-  .language-toggle{
-    position: relative;
-    margin: 10px auto;
-    display: block;
-    width: fit-content;
-    z-index: 10;
+  .language-toggle {
+    top: 5px;
+    right: 5px;
+    padding: 4px 8px;
+    font-size: 0.8rem;
   }
+
   .form-content {
     max-width: 450px;
   }
@@ -192,5 +193,22 @@ img, .logo {
   .logo {
     width: 340px;
   }
+   .app-container {
+    flex-direction: column;
+  }
+
+  .form-section,
+  .image-section {
+    width: 100%;
+  }
+
+  .form-section {
+    order: 1;
+  }
+
+  .image-section {
+    order: 2;
+  }
+
 }
   
