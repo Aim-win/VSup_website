@@ -196,10 +196,10 @@ img, .logo {
   }
 
   .form-section {
-    order: 2;
+    order: 1;
   }
 
   .image-section {
-    order: 1;
+    order: 2;
   }
 }
