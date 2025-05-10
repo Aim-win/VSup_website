@@ -55,7 +55,7 @@ Héberger les ressources
 
 Répondre aux appels API du backend
 
-🧩 Exemple de scénario :
+ Exemple de scénario :
 🔐 Connexion
 L’utilisateur entre son email + mot de passe → (frontend)
 
@@ -72,6 +72,3 @@ Il filtre les fichiers .pdf, puis renvoie les résultats → (backend → fronte
 
 📁 Arborescence du projet (/frontend, /backend)
 
-📦 Dépendances à installer
-
-🧱 Structure initiale de fichiers
