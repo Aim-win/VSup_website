@@ -186,6 +186,20 @@ img, .logo {
   .logo {
     width: 340px;
   }
+   .app-container {
+    flex-direction: column;
+  }
 
+  .form-section,
+  .image-section {
+    width: 100%;
+  }
+
+  .form-section {
+    order: 2;
+  }
+
+  .image-section {
+    order: 1;
+  }
 }
-  
