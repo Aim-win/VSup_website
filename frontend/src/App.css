@@ -168,6 +168,13 @@ img, .logo {
     font-size: 1.25rem;
   }
 
+  .language-toggle{
+    position: relative;
+    margin: 10px auto;
+    display: block;
+    width: fit-content;
+    z-index: 10;
+  }
   .form-content {
     max-width: 450px;
   }
