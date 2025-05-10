@@ -14,7 +14,7 @@ function App() {
   });
   const [error, setError] = useState('');
 
-  const [language, setLanguage] = useState('en'); // 'en' pour anglais, 'fr' pour français
+  const [language, setLanguage] = useState('fr'); // 'en' pour anglais, 'fr' pour français
 
   // Fonction pour basculer entre les langues
   const toggleLanguage = () => {
