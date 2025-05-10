@@ -186,7 +186,10 @@ img, .logo {
   .logo {
     width: 340px;
   }
-   .app-container {
+}
+
+@media screen and (max-width: 768px) {
+  .app-container {
     flex-direction: column;
   }
 
