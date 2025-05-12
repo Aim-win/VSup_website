@@ -48,7 +48,7 @@ const LoginForm = () => {
         required
       />
       <button type="submit">Se connecter</button>
-      <a href=""></a>
+      <a href="https://loginvs.up.railway.app/dut.html"></a>
     </form>
   );
 };
