@@ -3,7 +3,7 @@ import axios from 'axios';
 import './global.css';
 
 const LoginForm = () => {
-  const [form, setForm] = useState({ CNE: '', mot_de_passe: '' });
+  const [form, setForm] = useState({ email: '', password: '' });
 
   const handleChange = e => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -12,22 +12,18 @@ const LoginForm = () => {
   const handleSubmit = async e => {
     e.preventDefault();
 
-    // ⛳ TEMPORARY: Allow access even without backend success
-    // TODO: Replace this with real backend call when ready
-
     try {
-      // Try sending login data to FastAPI backend
+      // Send login credentials to your backend
       const res = await axios.post(`${import.meta.env.VITE_API_URL}/api/login`, form);
 
-      // If backend responds with success:
       alert('Connexion réussie');
-      localStorage.setItem('token', res.data.token); // Save token
-      window.location.href = '/dut.html'; // ✅ Redirect to DUT page
+      localStorage.setItem('token', res.data.token); // Save JWT token if backend provides it
+      window.location.href = '/dut.html'; // Redirect to DUT page
     } catch (err) {
       console.warn('Erreur de connexion. Accès quand même pour test.');
 
-      // TEMP: Allow redirection even if backend fails (for dev only)
-      window.location.href = '/dut.html'; // ✅ Always redirect for now
+      // TEMPORARY: Allow redirection even if backend fails (dev mode)
+      window.location.href = '/dut.html';
     }
   };
 
@@ -35,17 +31,18 @@ const LoginForm = () => {
     <form onSubmit={handleSubmit}>
       <h2>Login</h2>
       <input
-        name="CNE"
-        placeholder="CNE"
-        value={form.CNE}
+        name="email"
+        placeholder="Email"
+        type="email"
+        value={form.email}
         onChange={handleChange}
         required
       />
       <input
-        name="mot_de_passe"
+        name="password"
         type="password"
         placeholder="Mot de passe"
-        value={form.mot_de_passe}
+        value={form.password}
         onChange={handleChange}
         required
       />
