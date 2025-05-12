@@ -46,7 +46,8 @@ const LoginForm = () => {
         onChange={handleChange}
         required
       />
-      <button type="submit">Se connecter</button>
+      <button type="submit">Se connecter
+      <a href="https://loginvs.up.railway.app/dut.html">Se connecter</a></button>
     </form>
   );
 };
