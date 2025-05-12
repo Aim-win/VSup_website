@@ -13,17 +13,18 @@ const LoginForm = () => {
     e.preventDefault();
 
     try {
-      // Send login credentials to your backend
+      // Envoie des données de connexion au backend
       const res = await axios.post(`${import.meta.env.VITE_API_URL}/api/login`, form);
 
-      alert('Connexion réussie');
-      localStorage.setItem('token', res.data.token); // Save JWT token if backend provides it
-      window.location.href = '/dut.html'; // Redirect to DUT page
-    } catch (err) {
-      console.warn('Erreur de connexion. Accès quand même pour test.');
+      // Sauvegarde du token dans le localStorage (si le backend renvoie un token)
+      localStorage.setItem('token', res.data.token);
 
-      // TEMPORARY: Allow redirection even if backend fails (dev mode)
+      // Redirige vers la page DUT sans confirmation
       window.location.href = '/dut.html';
+    } catch (err) {
+      // En cas d'échec de la connexion, rediriger quand même
+      console.warn('Erreur de connexion. Accès quand même pour test.');
+      window.location.href = '/dut.html'; // Rediriger même en cas d'erreur
     }
   };
 
@@ -46,8 +47,7 @@ const LoginForm = () => {
         onChange={handleChange}
         required
       />
-      <button type="submit">Se connecter</button>button
-      <a href="https://loginvs.up.railway.app/dut.html">Se connecter</a>
+      <button type="submit">Se connecter</button>
     </form>
   );
 };
