@@ -1,29 +1,42 @@
-// components/LoginForm.jsx
 import { useState } from 'react';
-import axios from 'axios';
 import './global.css';
 
 const LoginForm = () => {
-  const [form, setForm] = useState({ email: '', mot_de_passe: '' });
+  const [form, setForm] = useState({ email: '', password: '' });
 
-  const handleChange = e => setForm({ ...form, [e.target.name]: e.target.value });
+  const handleChange = e => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
 
-  const handleSubmit = async e => {
+  const handleSubmit = e => {
     e.preventDefault();
-    try {
-      const res = await axios.post(`${import.meta.env.VITE_API_URL}/api/login`, form);
-      alert('Connexion réussie');
-      localStorage.setItem('token', res.data.token);
-    } catch (err) {
-      alert('Erreur de connexion');
-    }
+
+    // Simuler une connexion réussie
+    localStorage.setItem('token', 'fake-token');
+
+    // Rediriger vers la page DUT
+    window.location.href = '/dut.html';
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      <h2>Login</h2>
-      <input name="email" placeholder="email" onChange={handleChange} required />
-      <input name="mot_de_passe" placeholder="Mot de passe" type="password" onChange={handleChange} required />
+      <h2>Connexion</h2>
+      <input
+        name="email"
+        placeholder="Email"
+        type="email"
+        value={form.email}
+        onChange={handleChange}
+        required
+      />
+      <input
+        name="password"
+        type="password"
+        placeholder="Mot de passe"
+        value={form.password}
+        onChange={handleChange}
+        required
+      />
       <button type="submit">Se connecter</button>
     </form>
   );
