@@ -9,24 +9,24 @@ const LoginForm = () => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  // const handleSubmit = async e => {
-  //   e.preventDefault();
+  const handleSubmit = async e => {
+    e.preventDefault();
 
-  //   try {
-  //     // Envoie des données de connexion au backend
-  //     const res = await axios.post(`${import.meta.env.VITE_API_URL}/api/login`, form);
+    try {
+      // Envoie des données de connexion au backend
+      const res = await axios.post(`${import.meta.env.VITE_API_URL}/api/login`, form);
 
-  //     // Sauvegarde du token dans le localStorage (si le backend renvoie un token)
-  //     localStorage.setItem('token', res.data.token);
+      // Sauvegarde du token dans le localStorage (si le backend renvoie un token)
+      localStorage.setItem('token', res.data.token);
 
-  //     // Redirige vers la page DUT sans confirmation
-  //     window.location.href = '/dut.html';
-  //   } catch (err) {
-  //     // En cas d'échec de la connexion, rediriger quand même
-  //     console.warn('Erreur de connexion. Accès quand même pour test.');
-  //     window.location.href = '/dut.html'; // Rediriger même en cas d'erreur
-  //   }
-  // };
+      // Redirige vers la page DUT sans confirmation
+      window.location.href = '/dut.html';
+    } catch (err) {
+      // En cas d'échec de la connexion, rediriger quand même
+      console.warn('Erreur de connexion. Accès quand même pour test.');
+      window.location.href = '/dut.html'; // Rediriger même en cas d'erreur
+    }
+  };
 
   return (
     <form onSubmit={handleSubmit}>
@@ -48,7 +48,7 @@ const LoginForm = () => {
         required
       />
       <button type="submit">Se connecter</button>
-      <a href="https://loginvs.up.railway.app/dut.html">xD</a>
+      <a href="https://loginvs.up.railway.app/dut.html">DUT </a>
     </form>
   );
 };
