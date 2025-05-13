@@ -10,12 +10,8 @@ const LoginForm = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-
-    // Simuler une connexion réussie
-    localStorage.setItem('token', 'fake-token');
-
-    // Rediriger vers la page DUT
-    window.location.href = '/dut.html';
+    localStorage.setItem('token', 'fake-token'); // simulate login
+    window.location.href = '/dut.html'; // redirect
   };
 
   return (
@@ -38,6 +34,15 @@ const LoginForm = () => {
         required
       />
       <button type="submit">Se connecter</button>
+
+      {/* Direct access button */}
+      <button
+        type="button"
+        onClick={() => window.location.href = '/dut.html'}
+        style={{ marginTop: '1rem', backgroundColor: '#ccc', color: '#000' }}
+      >
+        Accès direct à DUT
+      </button>
     </form>
   );
 };
