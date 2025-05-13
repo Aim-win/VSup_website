@@ -5,78 +5,134 @@
   <title>IDS</title>
   <link rel="stylesheet" href="ids.css">
 </head>
-<script>
-  document.querySelectorAll('.toggle').forEach(toggle => {
-    toggle.addEventListener('click', () => {
-      const arrow = toggle.querySelector('.arrow');
-      const nested = toggle.nextElementSibling;
-
-      if (nested.style.display === 'block') {
-        nested.style.display = 'none';
-        arrow.textContent = '▶️';
-      } else {
-        nested.style.display = 'block';
-        arrow.textContent = '🔽';
-      }
-    });
-  });
-</script>
-
-
 <body>
+
   <header>
     <h1>IDS</h1>
   </header>
 
-  <main class="grid-container">
-    <section class="semestre" id="s1">
-      <h2>Semestre 1 (S1)</h2>
-      <ul>
-        <li><a href="pdfs/S1/cours1.pdf" target="_blank">Cours 1 : Cinématique</a></li>
-        <li><a href="pdfs/S1/cours2.pdf" target="_blank">Cours 2 : Thermodynamique</a></li>
+  <main>
+    <section class="semestre" id="s2">
+      <h2>Semestre 1 </h2>
+      <ul class="tree">
+        <li>
+          <div class="toggle">
+            <span class="arrow">▶️</span>
+            <span class="folder">Algo et C</span>
+          </div>
+          <ul class="nested">
+            <li><a href="pdfs/S2/cours1.pdf" target="_blank">Cours 1 : Introduction</a></li>
+            <li><a href="pdfs/S2/cours2.pdf" target="_blank">Cours 2 : Modèle relationnel</a></li>
+          </ul>
+        </li>
+        <li>
+          <div class="toggle">
+            <span class="arrow">▶️</span>
+            <span class="folder">Probabilité et statistiques</span>
+          </div>
+          <ul class="nested">
+            <li><a href="pdfs/S2/cours3.pdf" target="_blank">Cours 1 : Listes</a></li>
+            <li><a href="pdfs/S2/cours4.pdf" target="_blank">Cours 2 : Piles & Files</a></li>
+          </ul>
+        </li>
       </ul>
     </section>
 
-  <section class="semestre" id="s2">
-  <h2>Semestre 2 (S2)</h2>
-  <ul class="tree">
-    <li>
-      <div class="toggle">
-        <span class="arrow">▶️</span>
-        <span class="folder">BD (Base de Données)</span>
-      </div>
-      <ul class="nested">
-        <li><a href="pdfs/S2/cours1.pdf" target="_blank">Cours 1 : Introduction</a></li>
-        <li><a href="pdfs/S2/cours2.pdf" target="_blank">Cours 2 : Modèle relationnel</a></li>
-      </ul>
-    </li>
-    <li>
-      <div class="toggle">
-        <span class="arrow">▶️</span>
-        <span class="folder">SD (Structures de Données)</span>
-      </div>
-      <ul class="nested">
-        <li><a href="pdfs/S2/cours3.pdf" target="_blank">Cours 1 : Listes</a></li>
-        <li><a href="pdfs/S2/cours4.pdf" target="_blank">Cours 2 : Piles & Files</a></li>
-      </ul>
-    </li>
-  </ul>
-</section>
-
-
-    <section class="semestre" id="s3">
-      <h2>Semestre 3 (S3)</h2>
-      <ul>
-        <li><a href="pdfs/S3/cours1.pdf" target="_blank">Cours 1 : Optique</a></li>
+    <section class="semestre" id="s2">
+      <h2>Semestre 2</h2>
+      <ul class="tree">
+        <li>
+          <div class="toggle">
+            <span class="arrow">▶️</span>
+            <span class="folder">BD (Base de Données)</span>
+          </div>
+          <ul class="nested">
+            <li><a href="pdfs/S2/cours1.pdf" target="_blank">Cours 1 : Introduction</a></li>
+            <li><a href="pdfs/S2/cours2.pdf" target="_blank">Cours 2 : Modèle relationnel</a></li>
+          </ul>
+        </li>
+        <li>
+          <div class="toggle">
+            <span class="arrow">▶️</span>
+            <span class="folder">SD (Structures de Données)</span>
+          </div>
+          <ul class="nested">
+            <li><a href="pdfs/S2/cours3.pdf" target="_blank">Cours 1 : Listes</a></li>
+            <li><a href="pdfs/S2/cours4.pdf" target="_blank">Cours 2 : Piles & Files</a></li>
+          </ul>
+        </li>
       </ul>
     </section>
 
-    <section class="semestre" id="s4">
-      <h2>Semestre 4 (S4)</h2>
-      <ul>
-        <li><a href="pdfs/S4/cours1.pdf" target="_blank">Cours 1 : Mécanique Quantique</a></li>
+    <section class="semestre" id="s2">
+      <h2>Semestre 3</h2>
+      <ul class="tree">
+        <li>
+          <div class="toggle">
+            <span class="arrow">▶️</span>
+            <span class="folder">BD2 Oracle (Base de Données avancee)</span>
+          </div>
+          <ul class="nested">
+            <li><a href="pdfs/S2/cours1.pdf" target="_blank">Cours 1 : Introduction</a></li>
+            <li><a href="pdfs/S2/cours2.pdf" target="_blank">Cours 2 : Modèle relationnel</a></li>
+          </ul>
+        </li>
+        <li>
+          <div class="toggle">
+            <span class="arrow">▶️</span>
+            <span class="folder">Techniques d'exploration de Données</span>
+          </div>
+          <ul class="nested">
+            <li><a href="pdfs/S2/cours3.pdf" target="_blank">Cours 1 : Listes</a></li>
+            <li><a href="pdfs/S2/cours4.pdf" target="_blank">Cours 2 : Piles & Files</a></li>
+          </ul>
+        </li>
       </ul>
     </section>
-  </main>
+
+
+    <section class="semestre" id="s2">
+      <h2>Semestre 4</h2>
+      <ul class="tree">
+        <li>
+          <div class="toggle">
+            <span class="arrow">▶️</span>
+            <span class="folder">SI (systemes d'informations)</span>
+          </div>
+          <ul class="nested">
+            <li><a href="pdfs/S2/cours1.pdf" target="_blank">Cours 1 : Introduction</a></li>
+            <li><a href="pdfs/S2/cours2.pdf" target="_blank">Cours 2 : Modèle relationnel</a></li>
+          </ul>
+        </li>
+        <li>
+          <div class="toggle">
+            <span class="arrow">▶️</span>
+            <span class="folder">Python et Intilligence artificiel</span>
+          </div>
+          <ul class="nested">
+            <li><a href="pdfs/S2/cours3.pdf" target="_blank">Cours 1 : Listes</a></li>
+            <li><a href="pdfs/S2/cours4.pdf" target="_blank">Cours 2 : Piles & Files</a></li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+
+
+  <script>
+    document.querySelectorAll('.toggle').forEach(toggle => {
+      toggle.addEventListener('click', () => {
+        const arrow = toggle.querySelector('.arrow');
+        const nested = toggle.nextElementSibling;
+
+        if (nested.style.display === 'block') {
+          nested.style.display = 'none';
+          arrow.textContent = '▶️';
+        } else {
+          nested.style.display = 'block';
+          arrow.textContent = '🔽';
+        }
+      });
+    });
+  </script>
 </body>
 </html>
