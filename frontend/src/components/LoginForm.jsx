@@ -15,7 +15,7 @@ const LoginForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
       <h2>Connexion</h2>
       <input
         name="email"
@@ -35,11 +35,11 @@ const LoginForm = () => {
       />
       <button type="submit">Se connecter</button>
 
-      {/* Direct access button */}
+      {/* Direct DUT access button */}
       <button
         type="button"
         onClick={() => window.location.href = '/dut.html'}
-        style={{ marginTop: '1rem', backgroundColor: '#ccc', color: '#000' }}
+        style={{ backgroundColor: '#f0f0f0', color: '#000', border: '1px solid #ccc', padding: '0.5rem' }}
       >
         Accès direct à DUT
       </button>
