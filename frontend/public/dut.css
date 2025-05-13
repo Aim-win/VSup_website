@@ -13,7 +13,7 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #222831;
+    background-color: #000000;
     color: #FF9F00;
     line-height: 1.6;
     opacity: 0;
@@ -28,8 +28,20 @@ header {
     background-color: #DFD0B8;
     color: #00b478;
     padding: 1rem;
+    border-radius: px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* Ensures it stays above other elements */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
 }
-
+header:hover{
+    transform: translateY(-10px);
+    background-color: #ee944f4c;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    
+}
 nav ul {
     list-style: none;
     display: flex;
@@ -42,7 +54,7 @@ nav ul li {
 }
 
 nav ul li a {
-    color: #b40000ad;
+    color: #ac6029ad;
     text-decoration: none;
     font-size: 1.1rem;
 }
@@ -58,12 +70,12 @@ main {
 .specialties h1 {
     margin-bottom: 2rem;
     font-size: 2rem;
-    color: #FF9F00;
+    color: #ffffff;
 }
-
+    
 .specialty-cards {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));        
     gap: 2rem;
     margin-top: 2rem;
 }
@@ -79,7 +91,7 @@ main {
 
 .card:hover {
     transform: translateY(-10px);
-    background-color: #F4631E;
+    background-color: #ee944f88;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
     
 }
@@ -98,17 +110,7 @@ main {
 
 .card a {
     text-decoration: none;
-    color: #b84a18;
+    color: #000000;
     font-weight: bold;
     font-size: 1.1rem;
-}
-
-footer {
-    background-color: #393E46;
-    color: #00b478;
-    text-align: center;
-    padding: 1rem;
-    position: fixed;
-    width: 100%;
-    bottom: 0;
 }
