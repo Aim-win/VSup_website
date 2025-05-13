@@ -206,3 +206,16 @@ img, .logo {
     order: 1;
   }
 }
+.direct-access-btn {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 15px;
+  background-color: #003976;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 5px;
+}
+.direct-access-btn:hover {
+  background-color: #0407c2e0;
+}

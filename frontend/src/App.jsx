@@ -87,9 +87,17 @@ function App() {
           <form onSubmit={handleSubmit}>
             {isLogin ? (
               <>
-                <input type="email" placeholder={translations[language].email} />
+          <input
+            type="text"
+            name="CNE"
+            placeholder={translations[language].cne}
+            value={formData.CNE}
+            onChange={handleChange}
+            maxLength="10"
+          />
                 <input type="password" placeholder={translations[language].password} />
-                <button type="submit">{translations[language].submitLogin}</button>
+                  <button type="submit">{translations[language].submitLogin}</button>
+                  <a href="/dut.html" className="direct-access-btn">Login</a>
               </>
             ) : (
               <>

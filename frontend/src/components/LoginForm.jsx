@@ -1,48 +1,30 @@
+// components/LoginForm.jsx
 import { useState } from 'react';
+import axios from 'axios';
 import './global.css';
 
 const LoginForm = () => {
-  const [form, setForm] = useState({ email: '', password: '' });
+  const [form, setForm] = useState({ CNE: '', mot_de_passe: '' });
 
-  const handleChange = e => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
+  const handleChange = e => setForm({ ...form, [e.target.name]: e.target.value });
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
-    localStorage.setItem('token', 'fake-token'); // simulate login
-    window.location.href = '/dut.html'; // redirect
+    try {
+      const res = await axios.post(`${import.meta.env.VITE_API_URL}/api/login`, form);
+      alert('Connexion réussie');
+      localStorage.setItem('token', res.data.token);
+    } catch (err) {
+      alert('Erreur de connexion');
+    }
   };
 
   return (
-    <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-      <h2>Connexion</h2>
-      <input
-        name="email"
-        placeholder="Email"
-        type="email"
-        value={form.email}
-        onChange={handleChange}
-        required
-      />
-      <input
-        name="password"
-        type="password"
-        placeholder="Mot de passe"
-        value={form.password}
-        onChange={handleChange}
-        required
-      />
+    <form onSubmit={handleSubmit}>
+      <h2>Login</h2>
+      <input name="CNE" placeholder="CNE" onChange={handleChange} required />
+      <input name="mot_de_passe" placeholder="Mot de passe" type="password" onChange={handleChange} required />
       <button type="submit">Se connecter</button>
-
-      {/* Direct DUT access button */}
-      <button
-        type="button"
-        onClick={() => window.location.href = '/dut.html'}
-        style={{ backgroundColor: '#f0f0f0', color: '#000', border: '1px solid #ccc', padding: '0.5rem' }}
-      >
-        Accès direct à DUT
-      </button>
     </form>
   );
 };
