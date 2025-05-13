@@ -2,34 +2,29 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>IDS</title>
-  <link rel="stylesheet" href="ids.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IDS / Vsup</title>
+  <link rel="stylesheet" href="ids.css"> <!-- Keep your external CSS -->
+
 </head>
 <body>
-
   <header>
     <h1>IDS</h1>
   </header>
 
   <main>
-    <section class="semestre" id="s2">
-      <h2>Semestre 1 </h2>
+    <section class="semestre">
+      <h2>Semestre 1</h2>
       <ul class="tree">
         <li>
-          <div class="toggle">
-            <span class="arrow">▶️</span>
-            <span class="folder">Algo et C</span>
-          </div>
+          <div class="toggle"><span class="arrow">▶️</span><span class="folder">Algo et C</span></div>
           <ul class="nested">
             <li><a href="pdfs/S2/cours1.pdf" target="_blank">Cours 1 : Introduction</a></li>
             <li><a href="pdfs/S2/cours2.pdf" target="_blank">Cours 2 : Modèle relationnel</a></li>
           </ul>
         </li>
         <li>
-          <div class="toggle">
-            <span class="arrow">▶️</span>
-            <span class="folder">Probabilité et statistiques</span>
-          </div>
+          <div class="toggle"><span class="arrow">▶️</span><span class="folder">Probabilité et statistiques</span></div>
           <ul class="nested">
             <li><a href="pdfs/S2/cours3.pdf" target="_blank">Cours 1 : Listes</a></li>
             <li><a href="pdfs/S2/cours4.pdf" target="_blank">Cours 2 : Piles & Files</a></li>
@@ -38,24 +33,18 @@
       </ul>
     </section>
 
-    <section class="semestre" id="s2">
+    <section class="semestre">
       <h2>Semestre 2</h2>
       <ul class="tree">
         <li>
-          <div class="toggle">
-            <span class="arrow">▶️</span>
-            <span class="folder">BD (Base de Données)</span>
-          </div>
+          <div class="toggle"><span class="arrow">▶️</span><span class="folder">BD (Base de Données)</span></div>
           <ul class="nested">
             <li><a href="pdfs/S2/cours1.pdf" target="_blank">Cours 1 : Introduction</a></li>
             <li><a href="pdfs/S2/cours2.pdf" target="_blank">Cours 2 : Modèle relationnel</a></li>
           </ul>
         </li>
         <li>
-          <div class="toggle">
-            <span class="arrow">▶️</span>
-            <span class="folder">SD (Structures de Données)</span>
-          </div>
+          <div class="toggle"><span class="arrow">▶️</span><span class="folder">SD (Structures de Données)</span></div>
           <ul class="nested">
             <li><a href="pdfs/S2/cours3.pdf" target="_blank">Cours 1 : Listes</a></li>
             <li><a href="pdfs/S2/cours4.pdf" target="_blank">Cours 2 : Piles & Files</a></li>
@@ -64,24 +53,19 @@
       </ul>
     </section>
 
-    <section class="semestre" id="s2">
+
+    <section class="semestre">
       <h2>Semestre 3</h2>
       <ul class="tree">
         <li>
-          <div class="toggle">
-            <span class="arrow">▶️</span>
-            <span class="folder">BD2 Oracle (Base de Données avancee)</span>
-          </div>
+          <div class="toggle"><span class="arrow">▶️</span><span class="folder">BD2 Oracle (Base de Données avancée)</span></div>
           <ul class="nested">
             <li><a href="pdfs/S2/cours1.pdf" target="_blank">Cours 1 : Introduction</a></li>
             <li><a href="pdfs/S2/cours2.pdf" target="_blank">Cours 2 : Modèle relationnel</a></li>
           </ul>
         </li>
         <li>
-          <div class="toggle">
-            <span class="arrow">▶️</span>
-            <span class="folder">Techniques d'exploration de Données</span>
-          </div>
+          <div class="toggle"><span class="arrow">▶️</span><span class="folder">Techniques d'exploration de Données</span></div>
           <ul class="nested">
             <li><a href="pdfs/S2/cours3.pdf" target="_blank">Cours 1 : Listes</a></li>
             <li><a href="pdfs/S2/cours4.pdf" target="_blank">Cours 2 : Piles & Files</a></li>
@@ -91,24 +75,18 @@
     </section>
 
 
-    <section class="semestre" id="s2">
+    <section class="semestre">
       <h2>Semestre 4</h2>
       <ul class="tree">
         <li>
-          <div class="toggle">
-            <span class="arrow">▶️</span>
-            <span class="folder">SI (systemes d'informations)</span>
-          </div>
+          <div class="toggle"><span class="arrow">▶️</span><span class="folder">SI (Systèmes d'informations)</span></div>
           <ul class="nested">
             <li><a href="pdfs/S2/cours1.pdf" target="_blank">Cours 1 : Introduction</a></li>
             <li><a href="pdfs/S2/cours2.pdf" target="_blank">Cours 2 : Modèle relationnel</a></li>
           </ul>
         </li>
         <li>
-          <div class="toggle">
-            <span class="arrow">▶️</span>
-            <span class="folder">Python et Intilligence artificiel</span>
-          </div>
+          <div class="toggle"><span class="arrow">▶️</span><span class="folder">Python et Intelligence Artificielle</span></div>
           <ul class="nested">
             <li><a href="pdfs/S2/cours3.pdf" target="_blank">Cours 1 : Listes</a></li>
             <li><a href="pdfs/S2/cours4.pdf" target="_blank">Cours 2 : Piles & Files</a></li>
@@ -116,9 +94,15 @@
         </li>
       </ul>
     </section>
-
+  </main>
 
   <script>
+    // Fade-in background on page load
+    window.addEventListener('load', function () {
+      document.body.classList.add('background-fade');
+    });
+
+    // Toggle arrow and folder visibility
     document.querySelectorAll('.toggle').forEach(toggle => {
       toggle.addEventListener('click', () => {
         const arrow = toggle.querySelector('.arrow');
