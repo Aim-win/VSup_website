@@ -1,74 +1,37 @@
-https://loginvs.up.railway.app
-# VSup
-🖼️ Frontend (React) — Partie visible par l’utilisateur
-📍 Localisation : /frontend
-🔧 Technologies : React.js, HTML, CSS
- Responsabilités :
-Interface utilisateur (UI)
+-- Frontend (React) — Partie visible par l’utilisateur
+-- Localisation : /frontend
+-- Technologies : React.js, HTML, CSS, Vite, Fetch API
+ 
+                 Responsabilités :
+Interface utilisateur pour se connecter (via CNE)
 
-Affichage du formulaire de connexion
+Appels API vers le backend PHP (/api/login.php, etc.)
 
-Affichage des cours et PDF
+Affichage des fillieres DUT
 
-Appels HTTP vers mon backend Node.js
+Affichage dynamique des cours, PDFs filtrés
 
-Stockage local du token (dans localStorage ou cookies)
+Support multilingue (Français / Anglais)
 
-Navigation (React Router)
+    Backend (PHP + phpMyAdmin)
+    Localisation : /backend
+    Technologies : PHP, MySQL (via phpMyAdmin)
 
-    Composants React typiques :
-    
-Login.jsx → formulaire d’authentification
+                 Responsabilités :
+Authentifier l’utilisateur via sa base SQL (CNE + mot de passe)
 
-Dashboard.jsx → liste des cours
+Gérer la session utilisateur (ex: via $_SESSION)
 
-PDFViewer.jsx → liste de fichiers PDF
+Renvoyer les données cours/PDF à partir de la base ou d’une API Moodle
 
-Navbar.jsx → navigation
+Fournir des endpoints PHP appelés par le frontend React :
 
-🛠️ Backend (Node.js + SQL) — Partie serveur (invisible pour l’utilisateur)
-📍 Localisation : /backend
-🔧 Technologies : Node.js, Express, MySQL
- Responsabilités :
-Authentifier l’utilisateur via ta base SQL (/api/login)
+    Moodle (LMS) — Fournisseur de contenu
+    Technologies : PHP, MySQL, REST API
 
-Protéger les routes avec un JWT ou session
-
-Contacter Moodle via API REST avec un token sécurisé
-
-Filtrer les données Moodle (ex : ne renvoyer que les PDF)
-
-Fournir des endpoints à ton frontend :
-
-/api/login
-
-/api/courses
-
-/api/pdfs
-
-🎓 Moodle (LMS) — Fournisseur de contenu
-🔧 Technologies : PHP, MySQL, REST API
- Responsabilités :
+                 Responsabilités :
 Gérer les cours, sections, fichiers (PDFs)
 
-Héberger les ressources
+Héberger les ressources de formation
 
-Répondre aux appels API du backend
-
- Exemple de scénario :
-🔐 Connexion
-L’utilisateur entre son email + mot de passe → (frontend)
-
-Le backend (/api/login) vérifie dans la base SQL → (backend)
-
-Si OK, le backend renvoie un token JWT → (backend → frontend)
-
-📚 Récupération des PDF
-Le frontend appelle /api/pdfs avec le token → (frontend → backend)
-
-Lw backend appelle Moodle → core_course_get_contents → (backend → Moodle)
-
-Il filtre les fichiers .pdf, puis renvoie les résultats → (backend → frontend)
-
-📁 Arborescence du projet (/frontend, /backend)
-
+Répondre aux appels API du backend (ex: core_course_get_contents)

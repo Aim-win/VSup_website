@@ -1,29 +1,12 @@
+        Backend (PHP + phpMyAdmin)
+    Localisation :           /backend
+Technologies : PHP, MySQL (via phpMyAdmin)
 
-Backend (Node.js + SQL) — Partie serveur (invisible pour l’utilisateur)
-Localisation : /backend
-🔧 Technologies : Node.js, Express, MySQL
- Responsabilités :
-Authentifier l’utilisateur via ta base SQL (/api/login)
+                 Responsabilités :
+Authentifier l’utilisateur via sa base SQL (CNE + mot de passe)
 
-Protéger les routes avec un JWT ou session
+Gérer la session utilisateur (ex: via $_SESSION)
 
-Contacter Moodle via API REST avec un token sécurisé
+Renvoyer les données cours/PDF à partir de la base ou d’une API Moodle
 
-Filtrer les données Moodle (ex : ne renvoyer que les PDF)
-
-Fournir des endpoints à ton frontend :
-
-/api/login
-
-/api/courses
-
-/api/pdfs
-
-🎓 Moodle (LMS) — Fournisseur de contenu
-🔧 Technologies : PHP, MySQL, REST API
- Responsabilités :
-Gérer les cours, sections, fichiers (PDFs)
-
-Héberger les ressources
-
-Répondre aux appels API du backend
+Fournir des endpoints PHP appelés par le frontend React 
