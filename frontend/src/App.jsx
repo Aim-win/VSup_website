@@ -10,7 +10,7 @@ function App() {
     nom: '',
     email: '',
     mot_de_passe: '',
-    DN: ''
+    DN: '' 
   });
   const [error, setError] = useState('');
   const [language, setLanguage] = useState('fr'); 
@@ -22,7 +22,8 @@ function App() {
       email: 'Email',
       password: 'Password (8 - 12)',
       cne: 'CNE (10 characters)',
-      name: 'Name',
+      name: 'Last name (family)'
+,
       birthDate: 'Date of Birth',
       submitLogin: 'Login',
       submitRegister: 'Register',
@@ -30,7 +31,8 @@ function App() {
       toggleToLogin: "Already have an account? Login",
        cneError: 'CNE must be exactly 10 characters (1 Alphabet and 9 digits)',
       dateError: 'Invalid date',
-      passwordError: 'Password must be alphanumeric (8–12 characters, letters and digits )'
+      passwordError: 'The password must contain numbers, letters, and special characters (8 to 12 characters)',
+      nameError: 'Name must contain letters only'
     },
     fr: {
       login: 'Se connecter',
@@ -38,7 +40,7 @@ function App() {
       email: 'E-mail',
       password: 'Mot de passe (8 - 12)',
       cne: 'CNE (10 caractères)',
-      name: 'Nom',
+      name: 'Nom de famille',
       birthDate: 'Date de naissance',
       submitLogin: 'Se connecter',
       submitRegister: 'S\'inscrire',
@@ -46,7 +48,9 @@ function App() {
       toggleToLogin: 'Vous avez déjà un compte ? Se connecter',
       cneError: 'CNE doit comporter exactement 10 caractères (1 lettre au debut et 9 chiffres )',
       dateError: 'Date invalide ',
-      passwordError: 'Le mot de passe doit être alphanumérique (8 à 12 caractères, lettres et chiffres )'
+      passwordError: 'Le mot de passe doit être composé de chiffres, de lettres et de caractères spéciaux (8 à 12 caractères)',
+      nameError: 'Le nom doit contenir uniquement des lettres'
+
     },
     ar: {
       login: 'دخول',
@@ -54,7 +58,7 @@ function App() {
       email: 'البريد الإلكتروني',
       password: 'كلمة المرور(8 - 12)',
       cne: 'الرمز الوطني للطالب (10 أرقام)',
-      name: 'الاسم',
+      name: 'الاسم العائلي',
       birthDate: 'تاريخ الميلاد',
       submitLogin:  'تسجيل الدخول',
       submitRegister: 'تسجيل',
@@ -62,7 +66,8 @@ function App() {
       toggleToLogin: 'هل لديك حساب؟ سجل الدخول',
        cneError: 'يجب أن يكون طول الرمز 10 أحرف بالضبط (حرف واحد في البداية و 9 أرقام)',
       dateError: 'تاريخ غير صالح',
-      passwordError: 'يجب أن تحتوي كلمة المرور على أحرف وأرقام  (8 إلى 12 خانة)'
+      passwordError: 'يجب أن تحتوي كلمة المرور على أرقام وحروف ورموز خاصة (من 8 إلى 12 خانة).',
+      nameError: 'يجب أن يحتوي الاسم على حروف فقط'
     }
   };
 
@@ -75,6 +80,8 @@ function App() {
 const handleSubmit = (e) => {
   e.preventDefault();
 
+  const { name, value } = e.target;
+  setFormData((prevData) => ({ ...prevData, [name]: value }));
   // Vérif CNE
  if (
   !isLogin &&
@@ -84,19 +91,34 @@ const handleSubmit = (e) => {
   return;
 }
 
-
-  // Vérif date de naissance
-  if (!isLogin && (
-  new Date(formData.DN) > new Date('2008-12-31') || 
-  new Date(formData.DN) < new Date('1900-01-01')
-)) {
-  setError(translations[language].dateError);
+//verf nom
+const nameRegex = /^[A-Za-zÀ-ÖØ-öø-ÿ\s\-']+$/;
+if (!isLogin && !nameRegex.test(formData.nom)) {
+  setError(
+    translations[language].nameError || "Le nom doit contenir uniquement des lettres"
+  );
   return;
 }
 
+
+const birthDate = new Date(formData.DN);
+const today = new Date();
+const age = today.getFullYear() - birthDate.getFullYear();
+const m = today.getMonth() - birthDate.getMonth();
+
+    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+      age--; // ajuste si l'anniversaire n'est pas encore passé cette année
+    }
+      // Vérif de l'age
+
+    if (!isLogin && (age < 16 || age > 125)) {
+      setError(translations[language].dateError);
+      return;
+    }
   // Vérif mot de passe alphanumérique (8 à 12 caractères, lettres et chiffres)
   const password = formData.mot_de_passe;
-  const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,12}$/;
+  const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[^A-Za-z\d])[A-Za-z\d\S]{8,12}$/;
+
   if (!isLogin && !passwordRegex.test(password)) {
     setError(translations[language].passwordError);
     return;
@@ -108,7 +130,12 @@ const handleSubmit = (e) => {
 };
 
   const toggleForm = () => {
-    setIsLogin(!isLogin);
+    setIsLogin(!isLogin);  
+    
+    if (error) {
+    setError('');
+  }
+
   };
 
 
