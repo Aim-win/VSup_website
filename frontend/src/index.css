@@ -54,6 +54,10 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+.language-toggle-group{
+  background-color: #0b9dec;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;

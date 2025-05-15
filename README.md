@@ -35,3 +35,6 @@ Gérer les cours, sections, fichiers (PDFs)
 Héberger les ressources de formation
 
 Répondre aux appels API du backend (ex: core_course_get_contents)
+
+ressources utiles (mot de pass): 
+https://support.wizyemm.com/hc/en-us/articles/360042985674-Password-constraints#:~:text=Alphabetic%3A%20password%20must%20contain%20at,a%20special%20symbol%2C%20by%20default. 

@@ -13,21 +13,15 @@ function App() {
     DN: ''
   });
   const [error, setError] = useState('');
+  const [language, setLanguage] = useState('fr'); // 'fr', 'en', 'ar'
 
-  const [language, setLanguage] = useState('fr'); // 'en' pour anglais, 'fr' pour français
-
-  // Fonction pour basculer entre les langues
-  const toggleLanguage = () => {
-    setLanguage(language === 'en' ? 'fr' : 'en');
-  };
-
-  // Traductions pour chaque langue
+  // Traductions
   const translations = {
     en: {
       login: 'Login',
       register: 'Register',
       email: 'Email',
-      password: 'Password',
+      password: 'Password (8 - 12)',
       cne: 'CNE (10 characters)',
       name: 'Name',
       birthDate: 'Date of Birth',
@@ -40,7 +34,7 @@ function App() {
       login: 'Se connecter',
       register: 'S\'inscrire',
       email: 'E-mail',
-      password: 'Mot de passe',
+      password: 'Mot de passe (8 - 12)',
       cne: 'CNE (10 caractères)',
       name: 'Nom',
       birthDate: 'Date de naissance',
@@ -48,37 +42,44 @@ function App() {
       submitRegister: 'S\'inscrire',
       toggleToRegister: 'Besoin d\'un compte ? S\'inscrire',
       toggleToLogin: 'Vous avez déjà un compte ? Se connecter',
+    },
+    ar: {
+      login: 'دخول',
+      register: 'إنشاء حساب',
+      email: 'البريد الإلكتروني',
+      password: 'كلمة المرور(8 - 12)',
+      cne: 'الرمز الوطني للطالب (10 أرقام)',
+      name: 'الاسم',
+      birthDate: 'تاريخ الميلاد',
+      submitLogin:  'تسجيل الدخول',
+      submitRegister: 'تسجيل',
+      toggleToRegister: 'ليس لديك حساب؟ سجل الآن',
+      toggleToLogin: 'هل لديك حساب؟ سجل الدخول',
     }
   };
 
-  // Fonction pour gérer les changements dans le formulaire
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  // Fonction de soumission du formulaire
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    // Validation du CNE (10 caractères)
     if (!isLogin && formData.CNE.length !== 10) {
-      setError('CNE must be exactly 10 characters');
+      setError('CNE doit comporter exactement 10 caractères');
       return;
     }
-
     setError('');
     console.log(formData);
     alert(isLogin ? translations[language].submitLogin : translations[language].submitRegister);
   };
 
-  // Fonction pour basculer entre les formulaires Login et Register
   const toggleForm = () => {
     setIsLogin(!isLogin);
   };
 
   return (
-    <div className="app-container">
+    <div className="app-container" dir={language === 'ar' ? 'rtl' : 'ltr'}>
       <div className="form-section">
         <div className="form-content">
           <img src={Logo} alt="Logo" className="logo" />
@@ -87,17 +88,20 @@ function App() {
           <form onSubmit={handleSubmit}>
             {isLogin ? (
               <>
-          <input
-            type="text"
-            name="CNE"
-            placeholder={translations[language].cne}
-            value={formData.CNE}
-            onChange={handleChange}
-            maxLength="10"
-          />
-                <input type="password" placeholder={translations[language].password} />
-                  <button type="submit">{translations[language].submitLogin}</button>
-                  <a href="/dut.html" className="direct-access-btn">Login</a>
+                <input
+                  type="text"
+                  name="CNE"
+                  placeholder={translations[language].cne}
+                  value={formData.CNE}
+                  onChange={handleChange}
+                  maxLength="10"
+                />
+                <input type="password" placeholder={translations[language].password} 
+                    maxLength="12"
+                    minLength="8"
+                />
+                <button type="submit">{translations[language].submitLogin}</button>
+                <a href="/dut.html" className="direct-access-btn">{translations[language].login}</a>
               </>
             ) : (
               <>
@@ -107,7 +111,7 @@ function App() {
                   placeholder={translations[language].cne}
                   value={formData.CNE}
                   onChange={handleChange}
-                  maxLength="10" // Restriction à 10 caractères
+                  maxLength="10"
                 />
                 <input
                   type="text"
@@ -124,11 +128,13 @@ function App() {
                   onChange={handleChange}
                 />
                 <input
-                  type="password"
+                  type="text"
                   name="mot_de_passe"
                   placeholder={translations[language].password}
                   value={formData.mot_de_passe}
                   onChange={handleChange}
+                  maxLength="12"
+                  minLength="8"
                 />
                 <input
                   type="date"
@@ -150,16 +156,21 @@ function App() {
         </div>
       </div>
 
-      <div
-        className="image-section"
-        style={{ backgroundImage: `url(${BackgroundImage})` }}
-      ></div>
+     
 
-      {/* Bouton pour changer la langue */}
-      <button onClick={toggleLanguage} className="language-toggle">
-        {language === 'en' ? 'Français' : 'English'}
-      </button>
+<div
+  className="image-section"
+  style={{ backgroundImage: `url(${BackgroundImage})`, position: 'relative' }}
+>
+      <div className="language-toggle-group">
+        <button onClick={() => setLanguage('fr')}>Français</button>
+        <button onClick={() => setLanguage('en')}>English</button>
+        <button onClick={() => setLanguage('ar')}>العربية</button>
+      </div>
     </div>
+
+    </div>
+    
   );
 }
 
