@@ -1,4 +1,3 @@
-// components/RegisterForm.jsx
 import { useState } from 'react';
 import axios from 'axios';
 import './global.css';

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>IDS / Vsup</title>
-  <link rel="stylesheet" href="ids.css"> <!-- Keep your external CSS -->
+  <link rel="stylesheet" href="ids.css">
 
 </head>
 <body>
@@ -100,12 +100,10 @@
   </main>
 
   <script>
-    // Fade-in background on page load
     window.addEventListener('load', function () {
       document.body.classList.add('background-fade');
     });
 
-    // Toggle arrow and folder visibility
     document.querySelectorAll('.toggle').forEach(toggle => {
       toggle.addEventListener('click', () => {
         const arrow = toggle.querySelector('.arrow');

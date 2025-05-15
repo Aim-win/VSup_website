@@ -13,9 +13,8 @@ function App() {
     DN: ''
   });
   const [error, setError] = useState('');
-  const [language, setLanguage] = useState('fr'); // 'fr', 'en', 'ar'
+  const [language, setLanguage] = useState('fr'); 
 
-  // Traductions
   const translations = {
     en: {
       login: 'Login',
@@ -29,6 +28,9 @@ function App() {
       submitRegister: 'Register',
       toggleToRegister: "Need an account? Register",
       toggleToLogin: "Already have an account? Login",
+       cneError: 'CNE must be exactly 10 characters (1 Alphabet and 9 digits)',
+      dateError: 'Invalid date',
+      passwordError: 'Password must be alphanumeric (8–12 characters, letters and digits )'
     },
     fr: {
       login: 'Se connecter',
@@ -42,6 +44,9 @@ function App() {
       submitRegister: 'S\'inscrire',
       toggleToRegister: 'Besoin d\'un compte ? S\'inscrire',
       toggleToLogin: 'Vous avez déjà un compte ? Se connecter',
+      cneError: 'CNE doit comporter exactement 10 caractères (1 lettre au debut et 9 chiffres )',
+      dateError: 'Date invalide ',
+      passwordError: 'Le mot de passe doit être alphanumérique (8 à 12 caractères, lettres et chiffres )'
     },
     ar: {
       login: 'دخول',
@@ -55,6 +60,9 @@ function App() {
       submitRegister: 'تسجيل',
       toggleToRegister: 'ليس لديك حساب؟ سجل الآن',
       toggleToLogin: 'هل لديك حساب؟ سجل الدخول',
+       cneError: 'يجب أن يكون طول الرمز 10 أحرف بالضبط (حرف واحد في البداية و 9 أرقام)',
+      dateError: 'تاريخ غير صالح',
+      passwordError: 'يجب أن تحتوي كلمة المرور على أحرف وأرقام  (8 إلى 12 خانة)'
     }
   };
 
@@ -63,20 +71,47 @@ function App() {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!isLogin && formData.CNE.length !== 10) {
-      setError('CNE doit comporter exactement 10 caractères');
-      return;
-    }
-    setError('');
-    console.log(formData);
-    alert(isLogin ? translations[language].submitLogin : translations[language].submitRegister);
-  };
+
+const handleSubmit = (e) => {
+  e.preventDefault();
+
+  // Vérif CNE
+ if (
+  !isLogin &&
+  !/^[A-Za-z]{1}\d{9}$/.test(formData.CNE)
+) {
+  setError(translations[language].cneError);
+  return;
+}
+
+
+  // Vérif date de naissance
+  if (!isLogin && (
+  new Date(formData.DN) > new Date('2008-12-31') || 
+  new Date(formData.DN) < new Date('1900-01-01')
+)) {
+  setError(translations[language].dateError);
+  return;
+}
+
+  // Vérif mot de passe alphanumérique (8 à 12 caractères, lettres et chiffres)
+  const password = formData.mot_de_passe;
+  const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,12}$/;
+  if (!isLogin && !passwordRegex.test(password)) {
+    setError(translations[language].passwordError);
+    return;
+  }
+
+  setError('');
+  console.log(formData);
+  alert(isLogin ? translations[language].submitLogin : translations[language].submitRegister);
+};
 
   const toggleForm = () => {
     setIsLogin(!isLogin);
   };
+
+
 
   return (
     <div className="app-container" dir={language === 'ar' ? 'rtl' : 'ltr'}>
@@ -95,10 +130,13 @@ function App() {
                   value={formData.CNE}
                   onChange={handleChange}
                   maxLength="10"
+                  minLength="10"
+                  required
                 />
                 <input type="password" placeholder={translations[language].password} 
                     maxLength="12"
                     minLength="8"
+                    required
                 />
                 <button type="submit">{translations[language].submitLogin}</button>
                 <a href="/dut.html" className="direct-access-btn">{translations[language].login}</a>
@@ -112,13 +150,15 @@ function App() {
                   value={formData.CNE}
                   onChange={handleChange}
                   maxLength="10"
+                  required
                 />
                 <input
                   type="text"
                   name="nom"
                   placeholder={translations[language].name}
                   value={formData.nom}
-                  onChange={handleChange}
+                  onChange={handleChange}required
+                  maxLength="25"
                 />
                 <input
                   type="email"
@@ -126,6 +166,8 @@ function App() {
                   placeholder={translations[language].email}
                   value={formData.email}
                   onChange={handleChange}
+                  maxLength= "35"
+                  required
                 />
                 <input
                   type="text"
@@ -134,7 +176,8 @@ function App() {
                   value={formData.mot_de_passe}
                   onChange={handleChange}
                   maxLength="12"
-                  minLength="8"
+                 
+                  
                 />
                 <input
                   type="date"
@@ -142,6 +185,7 @@ function App() {
                   placeholder={translations[language].birthDate}
                   value={formData.DN}
                   onChange={handleChange}
+                  required
                 />
                 <button type="submit">{translations[language].submitRegister}</button>
               </>
